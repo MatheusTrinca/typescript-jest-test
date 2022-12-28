@@ -10,7 +10,7 @@ const messaging = new Messaging();
 const order = new Order(shoppingCart, messaging, persistence);
 
 shoppingCart.addItem(new Product('Camiseta', 49.9));
-shoppingCart.addItem(new Product('Caderno', 9.94757));
+shoppingCart.addItem(new Product('Caderno', 9.94758));
 shoppingCart.addItem(new Product('Lápis', 1.59));
 
 console.log(shoppingCart.items);
