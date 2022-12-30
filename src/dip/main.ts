@@ -1,7 +1,11 @@
 /*
-  Interface Segregation Principle
-  Os clientes não devem ser forçados a depender de types, interfaces ou
-  membros abstratos que não utilizam
+  Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem
+  depender de abstrações.
+  Dependa de abstrações, não de implementações.
+  Abstrações não devem depender de detalhes. Detalhes devem depender de abstrações.
+
+  Classes de baixo nível são classes que executam tarefas (os detalhes).
+  Classes de alto nível são classes que gerenciam classes de baixo nível.
 */
 import { Messaging } from './services/messaging';
 import { Order } from './classes/order';
