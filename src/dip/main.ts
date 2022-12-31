@@ -7,6 +7,7 @@
   Classes de baixo nível são classes que executam tarefas (os detalhes).
   Classes de alto nível são classes que gerenciam classes de baixo nível.
 */
+
 import { Messaging } from './services/messaging';
 import { Order } from './classes/order';
 import { Persistence } from './services/persistence';
@@ -18,6 +19,7 @@ import {
   TenPercentDiscount,
 } from './classes/discount';
 import { EnterpriseCustomer, IndividualCustomer } from './classes/customer';
+import { MessagingProtocol } from './classes/interfaces/messaging-protocol';
 
 //const fiftyPercentDiscount = new FiftyPercentDiscount();
 //const tenPercentDiscount = new TenPercentDiscount();
@@ -29,6 +31,12 @@ const noDiscount = new NoDiscount();
 //   '111.111.111-11',
 // );
 
+class MessagingMock implements MessagingProtocol {
+  sendMessage(msg: string): void {
+    console.log('Mensagem enviada pelo Mock: ', msg);
+  }
+}
+
 const enterpriseCustomer = new EnterpriseCustomer(
   'Matheus PJ',
   '111.001-34234/3423',
@@ -36,9 +44,10 @@ const enterpriseCustomer = new EnterpriseCustomer(
 const shoppingCart = new ShoppingCart(noDiscount);
 const persistence = new Persistence();
 const messaging = new Messaging();
+const messagingMock = new MessagingMock();
 const order = new Order(
   shoppingCart,
-  messaging,
+  messagingMock,
   persistence,
   enterpriseCustomer,
 );
